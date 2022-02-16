@@ -6,11 +6,9 @@ import { SkipNavContent } from '@reach/skip-nav';
 import styles from './layout.module.css';
 import Logo from '../icons/icon-logo';
 import MobileMenu from './menu/mobile-menu';
-import Footer, { HostedByVercel } from './footer';
+import Footer from './footer';
 
 import { NAVIGATION } from '@lib/constants';
-
-import ViewSource from '@components/svg/view-source/view-source';
 
 type Props = {
   children: React.ReactNode;
@@ -25,7 +23,6 @@ export default function Layout({ children, className, hideNav, layoutStyles }: P
 
   return (
     <>
-      <ViewSource />
       <div className={styles.background}>
         {!hideNav && (
           <header className={cn(styles.header)}>
@@ -50,9 +47,6 @@ export default function Layout({ children, className, hideNav, layoutStyles }: P
                   </a>
                 </Link>
               ))}
-            </div>
-            <div className={cn(styles['header-right'])}>
-              <HostedByVercel />
             </div>
           </header>
         )}
