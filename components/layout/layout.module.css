@@ -18,11 +18,22 @@
   flex: 1;
   display: flex;
 }
-
+/* 
 .full {
   display: flex;
   flex-direction: column;
+} */
+
+.contained {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.contained .full {
   width: 100%;
+  margin: unset;
 }
 
 .header {
@@ -33,6 +44,13 @@
   border-bottom: 1px solid var(--accents-7);
   height: var(--header-height);
   z-index: 2;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
 }
 
 .header-logos {

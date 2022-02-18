@@ -13,7 +13,10 @@
     "prettier/react"
   ],
   "rules": {
-    "@typescript-eslint/no-unused-vars": ["warn", { "args": "after-used", "ignoreRestSiblings": false, "argsIgnorePattern": "^_.*?$" }],
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      { "args": "after-used", "ignoreRestSiblings": false, "argsIgnorePattern": "^_.*?$" }
+    ],
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",

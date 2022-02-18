@@ -1,10 +1,12 @@
 import cn from 'classnames';
 import { useCallback, useState } from 'react';
-import styleUtils from '../utils/utils.module.css';
 import styles from './conf-entry.module.css';
+
 import { register } from '@lib/user-api';
 import { SITE_DESCRIPTION } from '@lib/constants';
 import useEmailQueryParam from '@lib/hooks/use-email-query-param';
+
+import styleUtils from '@components/utils/utils.module.css';
 import Captcha, { useCaptcha } from '@components/utils/captcha';
 import LoadingDots from '@components/utils/loading-dots';
 

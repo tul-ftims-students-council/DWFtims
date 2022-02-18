@@ -15,9 +15,10 @@ type Props = {
   className?: string;
   hideNav?: boolean;
   layoutStyles?: any;
+  fullWidth?: boolean;
 };
 
-export default function Layout({ children, className, hideNav, layoutStyles }: Props) {
+export default function Layout({ children, className, hideNav, layoutStyles, fullWidth }: Props) {
   const router = useRouter();
   const activeRoute = router.asPath;
 
@@ -26,34 +27,38 @@ export default function Layout({ children, className, hideNav, layoutStyles }: P
       <div className={styles.background}>
         {!hideNav && (
           <header className={cn(styles.header)}>
-            <div className={styles['header-logos']}>
-              <MobileMenu key={router.asPath} />
-              <Link href="/">
-                {/* eslint-disable-next-line */}
-                <a className={styles.logo}>
-                  <Logo />
-                </a>
-              </Link>
-            </div>
-            <div className={styles.tabs}>
-              {NAVIGATION.map(({ name, route }) => (
-                <Link key={name} href={route}>
-                  <a
-                    className={cn(styles.tab, {
-                      [styles['tab-active']]: activeRoute.startsWith(route)
-                    })}
-                  >
-                    {name}
+            <div className={styles['header-container']}>
+              <div className={styles['header-logos']}>
+                <MobileMenu key={router.asPath} />
+                <Link href="/">
+                  {/* eslint-disable-next-line */}
+                  <a className={styles.logo}>
+                    <Logo />
                   </a>
                 </Link>
-              ))}
+              </div>
+              <div className={styles.tabs}>
+                {NAVIGATION.map(({ name, route }) => (
+                  <Link key={name} href={route}>
+                    <a
+                      className={cn(styles.tab, {
+                        [styles['tab-active']]: activeRoute.startsWith(route)
+                      })}
+                    >
+                      {name}
+                    </a>
+                  </Link>
+                ))}
+              </div>
             </div>
           </header>
         )}
         <div className={styles.page}>
           <main className={styles.main} style={layoutStyles}>
             <SkipNavContent />
-            <div className={cn(styles.full, className)}>{children}</div>
+            <div className={cn(fullWidth ? styles.full : styles.contained, className)}>
+              {children}
+            </div>
           </main>
           {!activeRoute.startsWith('/stage') && <Footer />}
         </div>

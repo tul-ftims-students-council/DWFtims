@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 function calcVh() {
-  document.documentElement.style.setProperty('--100vh', `${window.innerHeight}px`);
+  document.documentElement.style.setProperty('--100vh', `${window.innerHeight - 1}px`);
 }
 
 /**

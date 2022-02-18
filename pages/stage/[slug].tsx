@@ -21,7 +21,7 @@ export default function StagePage({ stage, allStages }: Props) {
 
   return (
     <Page meta={meta} fullViewport>
-      <Layout>
+      <Layout fullWidth>
         <StageContainer stage={stage} allStages={allStages} />
       </Layout>
     </Page>
