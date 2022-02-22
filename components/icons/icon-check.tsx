@@ -1,5 +1,3 @@
-
-
 type Props = {
   color: string;
   size: number;

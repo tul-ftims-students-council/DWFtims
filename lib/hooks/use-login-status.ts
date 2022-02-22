@@ -1,5 +1,3 @@
-
-
 import useSWR, { ConfigInterface } from 'swr';
 
 export default function useLoginStatus(opts?: ConfigInterface) {

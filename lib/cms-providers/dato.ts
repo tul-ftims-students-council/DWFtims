@@ -1,4 +1,3 @@
-
 import { Job, Sponsor, Stage, Speaker } from '@lib/types';
 
 const API_URL = 'https://graphql.datocms.com/';

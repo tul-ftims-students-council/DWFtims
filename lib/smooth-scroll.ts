@@ -1,5 +1,3 @@
-
-
 import smoothscroll from 'smoothscroll-polyfill';
 
 let installed = false;

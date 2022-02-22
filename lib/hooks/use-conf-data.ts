@@ -1,5 +1,3 @@
-
-
 import { createContext, useContext } from 'react';
 
 export type PageState = 'registration' | 'ticket';

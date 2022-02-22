@@ -1,5 +1,3 @@
-
-
 export async function register(email: string, token?: string) {
   return await fetch('/api/register', {
     method: 'POST',

@@ -1,4 +1,3 @@
-
 import { Job, Sponsor, Stage, Speaker } from '@lib/types';
 
 const API_URL = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`;

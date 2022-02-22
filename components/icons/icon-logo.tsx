@@ -1,5 +1,3 @@
-
-
 export default function IconLogo({
   backgroundColor = 'transparent',
   foregroundColor = 'var(--accents-1)',

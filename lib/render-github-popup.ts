@@ -1,5 +1,3 @@
-
-
 import htmlescape from 'htmlescape';
 import { GitHubOAuthData } from '@lib/types';
 import { SITE_ORIGIN } from '@lib/constants';

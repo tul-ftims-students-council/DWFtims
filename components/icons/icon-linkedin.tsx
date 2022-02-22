@@ -1,5 +1,3 @@
-
-
 import styles from './icon-transition.module.css';
 
 type Props = { width: number | string };

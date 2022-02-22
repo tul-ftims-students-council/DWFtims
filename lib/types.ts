@@ -1,5 +1,3 @@
-
-
 export type Image = {
   url: string;
   blurDataURL?: string;

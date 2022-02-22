@@ -1,5 +1,3 @@
-
-
 export default function IconAvatar() {
   return (
     <svg

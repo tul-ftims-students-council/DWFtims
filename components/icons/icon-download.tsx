@@ -1,5 +1,3 @@
-
-
 import cn from 'classnames';
 import styles from './icon-transition.module.css';
 
