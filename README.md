@@ -1,4 +1,5 @@
 # Dzień wydziału Fizyki Technicznej, Informatyki i Matematyki Stosowanej
+
 This is a starter template for [Virtual Event Starter Kit](https://vercel.com/virtual-event-starter-kit)
 
 ## Running live on
@@ -7,10 +8,13 @@ This is a starter template for [Virtual Event Starter Kit](https://vercel.com/vi
 
 ## Running Locally
 
-First, set local environment variables. 
+First, set local environment variables.
 
 Obtain `STORYBLOK_PREVIEW_TOKEN` by contacting [Patryk Makowski](mailto:p.makowski@samorzad.p.lodz.pl) or if you have access to our StoryBlock then go to [StoryBlock Dashboard](https://app.storyblok.com/beta-v2/#/me/spaces/147123/dashboard)
 
+## GraphiQL playground
+
+https://gapi-browser.storyblok.com/?token=HJ4J3fcqLJQTkfMmFGAt2Qtt
 
 ```
 cp .env.local.example .env.local
@@ -24,4 +28,3 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
