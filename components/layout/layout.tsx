@@ -5,6 +5,7 @@ import { SkipNavContent } from '@reach/skip-nav';
 
 import styles from './layout.module.css';
 import Logo from '../icons/icon-logo';
+import Text from '@components/svg/sign/text';
 import MobileMenu from './menu/mobile-menu';
 import Footer from './footer';
 
@@ -33,7 +34,7 @@ export default function Layout({ children, className, hideNav, layoutStyles, ful
                 <Link href="/">
                   {/* eslint-disable-next-line */}
                   <a className={styles.logo}>
-                    <Logo />
+                    <Text />
                   </a>
                 </Link>
               </div>

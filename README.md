@@ -12,10 +12,6 @@ First, set local environment variables.
 
 Obtain `STORYBLOK_PREVIEW_TOKEN` by contacting [Patryk Makowski](mailto:p.makowski@samorzad.p.lodz.pl) or if you have access to our StoryBlock then go to [StoryBlock Dashboard](https://app.storyblok.com/beta-v2/#/me/spaces/147123/dashboard)
 
-## GraphiQL playground
-
-https://gapi-browser.storyblok.com/?token=HJ4J3fcqLJQTkfMmFGAt2Qtt
-
 ```
 cp .env.local.example .env.local
 ```
