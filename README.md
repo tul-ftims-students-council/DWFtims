@@ -8,7 +8,7 @@ This is a starter template for [Virtual Event Starter Kit](https://vercel.com/vi
 
 ## Running Locally
 
-First, set local environment variables.
+First, set local environment variables. []
 
 Obtain `STORYBLOK_PREVIEW_TOKEN` by contacting [Patryk Makowski](mailto:p.makowski@samorzad.p.lodz.pl) or if you have access to our StoryBlock then go to [StoryBlock Dashboard](https://app.storyblok.com/beta-v2/#/me/spaces/147123/dashboard)
 
