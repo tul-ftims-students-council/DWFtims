@@ -22,6 +22,11 @@ function transformResponse(response: any[], _speakers?: any) {
         item[key] = item[key].url;
       }
 
+      if (key === '_uid') {
+        item.id = item[key];
+        delete item[key];
+      }
+
       // remove nesting from schedule and assign speakers
       if (key === 'schedule') {
         item[key] = item[key].map((slot: { content: any; speaker: any }) => {
@@ -174,6 +179,7 @@ export async function getAllJobs(): Promise<Job[]> {
       JobItems(per_page: 100) {
         items {
           content {
+            _uid
             companyName
             title
             description
