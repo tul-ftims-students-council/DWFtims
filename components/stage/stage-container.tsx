@@ -6,6 +6,7 @@ import styles from './stage-container.module.css';
 import styleUtils from '../utils/utils.module.css';
 import ConfEntry from '@components/conference/conf-entry';
 import ScheduleSidebar from '@components/schedule/schedule-sidebar';
+import LiveChat from '@components/live/live-chat';
 
 type Props = {
   stage: Stage;
@@ -19,7 +20,8 @@ export default function StageContainer({ stage, allStages }: Props) {
   });
 
   const updatedStages = response.data || [];
-  const updatedStage = updatedStages.find((s: Stage) => s.slug === stage.slug) || stage;
+  const updatedStage = updatedStages.find((s: Stage) => s.slug === 'a') || stage;
+
   const { loginStatus, mutate } = useLoginStatus();
 
   return (
@@ -32,7 +34,7 @@ export default function StageContainer({ stage, allStages }: Props) {
               allowFullScreen
               frameBorder="0"
               src={`${updatedStage.stream}?autoplay=1&mute=1`}
-              title={updatedStage.name}
+              title="live"
               width="100%"
             />
             <div className={cn(styles.bottom, styleUtils.appear, styleUtils['appear-second'])}>
@@ -45,7 +47,8 @@ export default function StageContainer({ stage, allStages }: Props) {
           <ConfEntry onRegister={() => mutate()} />
         )}
       </div>
-      <ScheduleSidebar allStages={updatedStages} />
+      {/* <ScheduleSidebar allStages={updatedStages} /> */}
+      <LiveChat liveId={updatedStage.stream.split('/')[4]} />
     </div>
   );
 }
