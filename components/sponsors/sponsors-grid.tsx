@@ -6,8 +6,9 @@ import styles from './sponsors-grid.module.css';
 
 function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
   return (
-    <Link key={sponsor.name} href={`/expo/${sponsor.slug}`}>
+    <Link key={sponsor.name} href={`${sponsor.website}`}>
       <a
+        target='_blank'
         role="button"
         tabIndex={0}
         className={cn(styles.card, {
@@ -18,7 +19,7 @@ function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
         <div className={styles.imageWrapper}>
           <Image
             alt={sponsor.name}
-            src={sponsor.cardImage.url}
+            src={sponsor.logo.url}
             className={cn(styles.image, {
               [styles.silver]: sponsor.tier === 'silver'
             })}
