@@ -5,8 +5,7 @@ import useLoginStatus from '@lib/hooks/use-login-status';
 import styles from './stage-container.module.css';
 import styleUtils from '../utils/utils.module.css';
 import ConfEntry from '@components/conference/conf-entry';
-import ScheduleSidebar from '@components/schedule/schedule-sidebar';
-import LiveChat from '@components/live/live-chat';
+import LiveChat from '@components/stage/live-chat';
 
 type Props = {
   stage: Stage;
@@ -20,9 +19,10 @@ export default function StageContainer({ stage, allStages }: Props) {
   });
 
   const updatedStages = response.data || [];
-  const updatedStage = updatedStages.find((s: Stage) => s.slug === 'a') || stage;
+  const updatedStage = updatedStages.find((s: Stage) => s.slug === stage.slug) || stage;
 
   const { loginStatus, mutate } = useLoginStatus();
+  const streamId = updatedStage.stream.split('/')[4];
 
   return (
     <div className={styles.container}>
@@ -33,8 +33,8 @@ export default function StageContainer({ stage, allStages }: Props) {
               allow="autoplay; picture-in-picture"
               allowFullScreen
               frameBorder="0"
-              src={`${updatedStage.stream}?autoplay=1&mute=1`}
-              title="live"
+              src={`${updatedStage.stream}?autoplay=1&mute=1&theme=dark`}
+              title={updatedStage.name}
               width="100%"
             />
             <div className={cn(styles.bottom, styleUtils.appear, styleUtils['appear-second'])}>
@@ -47,8 +47,7 @@ export default function StageContainer({ stage, allStages }: Props) {
           <ConfEntry onRegister={() => mutate()} />
         )}
       </div>
-      {/* <ScheduleSidebar allStages={updatedStages} /> */}
-      <LiveChat liveId={updatedStage.stream.split('/')[4]} />
+      <LiveChat liveId={streamId} />
     </div>
   );
 }
