@@ -85,3 +85,8 @@ export type GitHubOAuthData =
       name: string;
       login: string;
     };
+
+    export type Request = {
+      email: string,
+      talks: string[]
+    }
