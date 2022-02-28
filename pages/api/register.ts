@@ -8,7 +8,9 @@ export default async function register(req: NextApiRequest, res: NextApiResponse
   const { CLIENT_EMAIL, PRIVATE_KEY, SHEET_NAME } = process.env;
 
   if (!CLIENT_EMAIL || !PRIVATE_KEY || !SHEET_NAME) {
-    return res.status(400).json({ message: 'Env value is missing' });
+    return res.status(400).json({
+      message: 'Env value is missing'
+    });
   }
 
   if (typeof email !== 'string' || !Array.isArray(talks) || !email || !talks) {
@@ -23,7 +25,7 @@ export default async function register(req: NextApiRequest, res: NextApiResponse
 
   if (!isCorectEmail) {
     return res.status(400).json({
-      message: 'Incorrect email'
+      message: 'Invalid email'
     });
   }
 
@@ -43,7 +45,7 @@ export default async function register(req: NextApiRequest, res: NextApiResponse
   for (let row of rows) {
     if (row.Email === emailParsed) {
       return res.status(409).json({
-        message: 'Email alredy exist'
+        message: 'Email already exist'
       });
     }
   }
