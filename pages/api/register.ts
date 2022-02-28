@@ -4,13 +4,20 @@ import { GoogleSpreadsheet } from 'google-spreadsheet';
 
 export default async function register(req: NextApiRequest, res: NextApiResponse) {
   const { email, talks } = req.body;
-  const emailParsed = email.trim().toLowerCase();
 
-  if (!(email instanceof String) || !Array.isArray(talks) || !email || !talks) {
+  const { CLIENT_EMAIL, PRIVATE_KEY, SHEET_NAME } = process.env;
+
+  if (!CLIENT_EMAIL || !PRIVATE_KEY || !SHEET_NAME) {
+    return res.status(400).json({ message: 'Env value is missing' });
+  }
+
+  if (typeof email !== 'string' || !Array.isArray(talks) || !email || !talks) {
     return res.status(400).json({
       message: 'Invalid request body'
     });
   }
+
+  const emailParsed = email.trim().toLowerCase();
 
   const isCorectEmail = validator.isEmail(emailParsed) && emailParsed.endsWith('@edu.p.lodz.pl');
 
@@ -22,26 +29,14 @@ export default async function register(req: NextApiRequest, res: NextApiResponse
 
   const doc = new GoogleSpreadsheet('1fTElXLbUPgy2cgP1zO9omKn8vHDwSixkIkSxA9ZHhJA');
 
-  if (!process.env.CLIENT_EMAIL || !process.env.PRIVATE_KEY) {
-    return res.status(400).json({
-      message: 'No CLIENT_EMAIL or PRIVATE_KEY'
-    });
-  }
-
   await doc.useServiceAccountAuth({
-    client_email: process.env.CLIENT_EMAIL,
-    private_key: process.env.PRIVATE_KEY
+    client_email: CLIENT_EMAIL,
+    private_key: PRIVATE_KEY
   });
 
   await doc.loadInfo();
 
-  if (!process.env.SHEET_NAME) {
-    return res.status(400).json({
-      message: 'No SHEET_NAME'
-    });
-  }
-
-  const sheet = doc.sheetsByTitle[process.env.SHEET_NAME];
+  const sheet = doc.sheetsByTitle[SHEET_NAME];
 
   const rows = await sheet.getRows();
 
