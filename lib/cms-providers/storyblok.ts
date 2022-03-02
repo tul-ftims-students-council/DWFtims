@@ -142,27 +142,16 @@ export async function getAllSponsors(): Promise<Sponsor[]> {
       items {
         content {
           name
-          description
           slug
-          website {
-            url
-          }
-          callToAction
-          callToActionLink {
-            url
-          }
-          discord {
-            url
-          }
-          youtubeSlug
-          tier
-          links
-          cardImage {
-            url: filename
-          }
+          description
           logo {
             url: filename
           }
+          website {
+            url
+          }
+          tier
+          tierRank
         }
       }
     }
