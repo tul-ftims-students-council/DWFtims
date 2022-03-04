@@ -6,10 +6,16 @@
   "engines": {
     "node": ">=12"
   },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "./prepare-commit-msg.sh $HUSKY_GIT_PARAMS"
+    }
+  },
   "scripts": {
     "dev": "next",
     "start": "next start",
-    "build": "next build"
+    "build": "next build",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@agility/content-fetch": "1.1.1",
@@ -56,6 +62,7 @@
     "eslint-config-prettier": "7.0.0",
     "eslint-plugin-react": "7.21.5",
     "eslint-plugin-react-hooks": "4.2.0",
+    "husky": "^7.0.4",
     "postcss-flexbugs-fixes": "5.0.2",
     "postcss-hover-media-feature": "1.0.0",
     "postcss-preset-env": "6.7.0",
