@@ -42,7 +42,7 @@ export default async function register(req: NextApiRequest, res: NextApiResponse
 
   const rows = await sheet.getRows();
 
-  for (let row of rows) {
+  for (const row of rows) {
     if (row.Email === emailParsed) {
       return res.status(409).json({
         message: 'Email already exist'
