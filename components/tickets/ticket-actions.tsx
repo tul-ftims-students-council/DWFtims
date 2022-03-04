@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import cn from 'classnames';
-import { SITE_URL, TWEET_TEXT } from '@lib/constants';
+import { SITE_URL } from '@lib/constants';
 import IconTwitter from '../icons/icon-twitter';
 import IconLinkedin from '../icons/icon-linkedin';
 import IconDownload from '../icons/icon-download';
@@ -17,7 +17,6 @@ export default function TicketActions({ username }: Props) {
   const [loading, setLoading] = useState(false);
   const downloadLink = useRef<HTMLAnchorElement>();
   const permalink = encodeURIComponent(`${SITE_URL}/tickets/${username}`);
-  const text = encodeURIComponent(TWEET_TEXT);
   const tweetUrl = `https://twitter.com/intent/tweet?url=${permalink}&via=vercel&text=${text}`;
   const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${permalink}`;
   const downloadUrl = `/api/ticket-images/${username}`;
