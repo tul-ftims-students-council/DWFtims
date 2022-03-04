@@ -1,113 +1,56 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { nanoid } from 'nanoid';
-import { ConfUser } from '@lib/types';
 import validator from 'validator';
-import { SAMPLE_TICKET_NUMBER, COOKIE } from '@lib/constants';
-import cookie from 'cookie';
-import ms from 'ms';
-import redis, { emailToId } from '@lib/redis';
-import { validateCaptchaResult, IS_CAPTCHA_ENABLED } from '@lib/captcha';
+import { GoogleSpreadsheet } from 'google-spreadsheet';
 
-type ErrorResponse = {
-  error: {
-    code: string;
-    message: string;
-  };
-};
+export default async function register(req: NextApiRequest, res: NextApiResponse) {
+  const { email, talks } = req.body;
 
-export default async function register(
-  req: NextApiRequest,
-  res: NextApiResponse<ConfUser | ErrorResponse>
-) {
-  if (req.method !== 'POST') {
-    return res.status(501).json({
-      error: {
-        code: 'method_unknown',
-        message: 'This endpoint only responds to POST'
-      }
-    });
-  }
+  const { CLIENT_EMAIL, PRIVATE_KEY, SHEET_NAME } = process.env;
 
-  const email: string = ((req.body.email as string) || '').trim().toLowerCase();
-  const token: string = req.body.token as string;
-  if (!validator.isEmail(email)) {
+  if (!CLIENT_EMAIL || !PRIVATE_KEY || !SHEET_NAME) {
     return res.status(400).json({
-      error: {
-        code: 'bad_email',
-        message: 'Invalid email'
-      }
+      message: 'Env value is missing'
     });
   }
 
-  if (IS_CAPTCHA_ENABLED) {
-    const isCaptchaValid = await validateCaptchaResult(token);
+  if (typeof email !== 'string' || !Array.isArray(talks) || !email || !talks) {
+    return res.status(400).json({
+      message: 'Invalid request body'
+    });
+  }
 
-    if (!isCaptchaValid) {
-      return res.status(400).json({
-        error: {
-          code: 'bad_captcha',
-          message: 'Invalid captcha'
-        }
+  const emailParsed = email.trim().toLowerCase();
+
+  const isCorectEmail = validator.isEmail(emailParsed) && emailParsed.endsWith('@edu.p.lodz.pl');
+
+  if (!isCorectEmail) {
+    return res.status(400).json({
+      message: 'Invalid email'
+    });
+  }
+
+  const doc = new GoogleSpreadsheet('1fTElXLbUPgy2cgP1zO9omKn8vHDwSixkIkSxA9ZHhJA');
+
+  await doc.useServiceAccountAuth({
+    client_email: CLIENT_EMAIL,
+    private_key: PRIVATE_KEY
+  });
+
+  await doc.loadInfo();
+
+  const sheet = doc.sheetsByTitle[SHEET_NAME];
+
+  const rows = await sheet.getRows();
+
+  for (let row of rows) {
+    if (row.Email === emailParsed) {
+      return res.status(409).json({
+        message: 'Email already exist'
       });
     }
   }
 
-  let id;
-  let ticketNumber: number;
-  let createdAt: number;
-  let statusCode: number;
-  let name: string | undefined = undefined;
-  let username: string | undefined = undefined;
-  if (redis) {
-    id = emailToId(email);
-    const existingTicketNumberString = await redis.hget(`id:${id}`, 'ticketNumber');
+  await sheet.addRow([new Date().toLocaleString(), emailParsed, JSON.stringify(talks)]);
 
-    if (existingTicketNumberString) {
-      const item = await redis.hmget(`id:${id}`, 'name', 'username', 'createdAt');
-      name = item[0]!;
-      username = item[1]!;
-      ticketNumber = parseInt(existingTicketNumberString, 10);
-      createdAt = parseInt(item[2]!, 10);
-      statusCode = 200;
-    } else {
-      ticketNumber = await redis.incr('count');
-      createdAt = Date.now();
-      await redis.hmset(
-        `id:${id}`,
-        'email',
-        email,
-        'ticketNumber',
-        ticketNumber,
-        'createdAt',
-        createdAt
-      );
-      statusCode = 201;
-    }
-  } else {
-    id = nanoid();
-    ticketNumber = SAMPLE_TICKET_NUMBER;
-    createdAt = Date.now();
-    statusCode = 200;
-  }
-
-  // Save `key` in a httpOnly cookie
-  res.setHeader(
-    'Set-Cookie',
-    cookie.serialize(COOKIE, id, {
-      httpOnly: true,
-      sameSite: 'strict',
-      secure: process.env.NODE_ENV === 'production',
-      path: '/api',
-      expires: new Date(Date.now() + ms('7 days'))
-    })
-  );
-
-  return res.status(statusCode).json({
-    id,
-    email,
-    ticketNumber,
-    createdAt,
-    name,
-    username
-  });
+  return res.status(201);
 }
