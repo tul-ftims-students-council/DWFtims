@@ -3,7 +3,6 @@ import Ticket from '../tickets/ticket';
 import Layout from '../layout/layout';
 import Hero from './hero';
 import Form from '../utils/form';
-import LearnMore from './learn-more';
 
 import ConfContainer from '@components/conference/conf-container';
 
@@ -37,7 +36,6 @@ export default function Conf({
             <>
               <Hero />
               <Form />
-              <LearnMore />
             </>
           ) : (
             <Ticket
