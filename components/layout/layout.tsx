@@ -1,11 +1,10 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import cn from 'classnames';
 import { useRouter } from 'next/router';
 import { SkipNavContent } from '@reach/skip-nav';
 
 import styles from './layout.module.css';
-import Logo from '../icons/icon-logo';
-import Text from '@components/svg/sign/text';
 import MobileMenu from './menu/mobile-menu';
 import Footer from './footer';
 
@@ -32,9 +31,8 @@ export default function Layout({ children, className, hideNav, layoutStyles, ful
               <div className={styles['header-logos']}>
                 <MobileMenu key={router.asPath} />
                 <Link href="/">
-                  {/* eslint-disable-next-line */}
                   <a className={styles.logo}>
-                    <Text />
+                    <Image alt="logo" src="/logo.png" width="48" height="48" />
                   </a>
                 </Link>
               </div>
