@@ -34,11 +34,11 @@
   }
 }
 
-.ticket-text {
+.register-confirmation-text {
   margin-bottom: 30px;
 }
 
-.ticket-layout {
+.register-confirmation-layout {
   display: grid;
   grid-template-columns: 1fr;
   gap: 45px;
@@ -46,12 +46,12 @@
   padding: var(--space-4x);
 }
 
-.ticket-share-layout {
+.register-confirmation-share-layout {
   align-items: center;
   margin-bottom: auto;
 }
 
-.ticket-visual {
+.register-confirmation-visual {
   position: relative;
   border-radius: var(--space-4x);
   overflow: hidden;
@@ -59,8 +59,8 @@
   margin: 0 auto;
 }
 
-.ticket-visual:before,
-.ticket-visual:after {
+.register-confirmation-visual:before,
+.register-confirmation-visual:after {
   content: '';
   display: block;
   width: 72px;
@@ -71,37 +71,37 @@
   border-radius: 50%;
 }
 
-.ticket-visual:before {
+.register-confirmation-visual:before {
   left: 50%;
   top: -7.5%;
   transform: translateZ(0) translateX(-50%) rotate(90deg);
 }
 
-.ticket-visual:after {
+.register-confirmation-visual:after {
   left: 50%;
   bottom: -7.5%;
   transform: translateZ(0) translateX(-50%) rotate(90deg);
 }
 
 @media (min-width: 768px) {
-  .ticket-visual {
+  .register-confirmation-visual {
     width: 650px;
   }
 
-  .ticket-visual:before {
+  .register-confirmation-visual:before {
     top: 50%;
     left: -7%;
     transform: translateZ(0) translateY(-50%);
   }
 
-  .ticket-visual:after {
+  .register-confirmation-visual:after {
     top: 50%;
     left: 96%;
     transform: translateZ(0) translateY(-50%);
   }
 }
 
-.ticket-actions {
+.register-confirmation-actions {
   margin-top: 30px;
   display: flex;
   align-items: center;
@@ -109,25 +109,25 @@
   flex-direction: column;
 }
 
-.ticket-copy {
+.register-confirmation-copy {
   margin-top: 30px;
 }
 
-.ticket-actions-placeholder {
+.register-confirmation-actions-placeholder {
   height: 280px;
 }
 
 @media (min-width: 768px) {
-  .ticket-actions {
+  .register-confirmation-actions {
     flex-direction: row;
   }
-  .ticket-actions-placeholder {
+  .register-confirmation-actions-placeholder {
     height: 157px;
   }
 }
 
 @media (min-width: 1200px) {
-  .ticket-layout {
+  .register-confirmation-layout {
     grid-template-columns: 1fr 1fr;
   }
   .hero {
@@ -140,12 +140,12 @@
   }
 }
 
-.ticket-visual-wrapper {
+.register-confirmation-visual-wrapper {
   width: 100%;
 }
 
 @media screen and (min-width: 1280px) {
-  .ticket-layout {
+  .register-confirmation-layout {
     padding: 0 40px;
   }
 }
