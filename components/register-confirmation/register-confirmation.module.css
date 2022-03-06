@@ -46,86 +46,6 @@
   padding: var(--space-4x);
 }
 
-.register-confirmation-share-layout {
-  align-items: center;
-  margin-bottom: auto;
-}
-
-.register-confirmation-visual {
-  position: relative;
-  border-radius: var(--space-4x);
-  overflow: hidden;
-  width: 330px;
-  margin: 0 auto;
-}
-
-.register-confirmation-visual:before,
-.register-confirmation-visual:after {
-  content: '';
-  display: block;
-  width: 72px;
-  height: 58px;
-  background-color: black;
-  position: absolute;
-  z-index: 100;
-  border-radius: 50%;
-}
-
-.register-confirmation-visual:before {
-  left: 50%;
-  top: -7.5%;
-  transform: translateZ(0) translateX(-50%) rotate(90deg);
-}
-
-.register-confirmation-visual:after {
-  left: 50%;
-  bottom: -7.5%;
-  transform: translateZ(0) translateX(-50%) rotate(90deg);
-}
-
-@media (min-width: 768px) {
-  .register-confirmation-visual {
-    width: 650px;
-  }
-
-  .register-confirmation-visual:before {
-    top: 50%;
-    left: -7%;
-    transform: translateZ(0) translateY(-50%);
-  }
-
-  .register-confirmation-visual:after {
-    top: 50%;
-    left: 96%;
-    transform: translateZ(0) translateY(-50%);
-  }
-}
-
-.register-confirmation-actions {
-  margin-top: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.register-confirmation-copy {
-  margin-top: 30px;
-}
-
-.register-confirmation-actions-placeholder {
-  height: 280px;
-}
-
-@media (min-width: 768px) {
-  .register-confirmation-actions {
-    flex-direction: row;
-  }
-  .register-confirmation-actions-placeholder {
-    height: 157px;
-  }
-}
-
 @media (min-width: 1200px) {
   .register-confirmation-layout {
     grid-template-columns: 1fr 1fr;
@@ -138,10 +58,6 @@
     text-align: left;
     margin: 30px 0;
   }
-}
-
-.register-confirmation-visual-wrapper {
-  width: 100%;
 }
 
 @media screen and (min-width: 1280px) {

@@ -1,5 +1,4 @@
 import cn from 'classnames';
-import Tilt from 'vanilla-tilt';
 import { useRef, useEffect } from 'react';
 import isMobileOrTablet from '@lib/is-mobile-or-tablet';
 import { scrollTo } from '@lib/smooth-scroll';
