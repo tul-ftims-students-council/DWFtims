@@ -3,7 +3,7 @@ name: Deploy to vercel 🚀
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build-and-deploy:
