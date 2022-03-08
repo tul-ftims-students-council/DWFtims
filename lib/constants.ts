@@ -5,10 +5,9 @@ export const SITE_NAME_MULTILINE = ['WRS', 'FTIMS'];
 export const SITE_NAME = 'WRS FTIMS';
 export const META_DESCRIPTION =
   'Strona przygotowana do obsługi hybrydowego dnia Wydziału Fizyki Technicznej, Informatyki i Matematyki Stosowanej.';
-export const SITE_DESCRIPTION =
-  'Dzień Wydziału FTIMS! Dołącz już teraz na wydarzenie live!';
+export const SITE_DESCRIPTION = 'Dzień Wydziału FTIMS! Dołącz już teraz na wydarzenie live!';
 export const DATE = '07.04.2022';
-export const SHORT_DATE = 'kwi 27 - 9:00am CET';
+export const SHORT_DATE = 'kwi 7 - 9:00am CET';
 export const COOKIE = 'user-id';
 
 export const CODE_OF_CONDUCT =
