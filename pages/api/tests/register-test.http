@@ -1,0 +1,10 @@
+POST http://localhost:3000/api/register HTTP/1.1
+content-type: application/json
+
+{
+	"indexNumber": "420690",
+	"talks": [
+		"Jak zajebałem wiadro",
+		"Zjarany przez świat"
+	]
+}

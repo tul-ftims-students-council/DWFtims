@@ -30,5 +30,5 @@
     "@typescript-eslint/restrict-template-expressions": 0,
     "@typescript-eslint/no-empty-function": 0
   },
-  "exclude": ["next.config.js"]
+  "ignorePatterns": ["next.config.js"]
 }

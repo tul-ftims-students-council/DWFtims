@@ -1,9 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import validator from 'validator';
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 
 export default async function register(req: NextApiRequest, res: NextApiResponse) {
-  const { email, talks } = req.body;
+  const { indexNumber, talks } = req.body;
 
   const { CLIENT_EMAIL, PRIVATE_KEY, SHEET_NAME } = process.env;
 
@@ -13,19 +12,17 @@ export default async function register(req: NextApiRequest, res: NextApiResponse
     });
   }
 
-  if (typeof email !== 'string' || !Array.isArray(talks) || !email || !talks) {
+  if (typeof indexNumber !== 'string' || !Array.isArray(talks) || !indexNumber || !talks) {
     return res.status(400).json({
       message: 'Invalid request body'
     });
   }
 
-  const emailParsed = email.trim().toLowerCase();
+  const isCorrectIndexNumber = /[0-9]{6}/.test(indexNumber);
 
-  const isCorectEmail = validator.isEmail(emailParsed) && emailParsed.endsWith('@edu.p.lodz.pl');
-
-  if (!isCorectEmail) {
+  if (!isCorrectIndexNumber) {
     return res.status(400).json({
-      message: 'Invalid email'
+      message: 'Invalid index number.'
     });
   }
 
@@ -42,15 +39,15 @@ export default async function register(req: NextApiRequest, res: NextApiResponse
 
   const rows = await sheet.getRows();
 
-  for (let row of rows) {
-    if (row.Email === emailParsed) {
-      return res.status(409).json({
-        message: 'Email already exist'
-      });
-    }
+  const isEmailAlreadyInSheet = !!rows.filter(row => row.indexNumber === indexNumber).length;
+
+  if (isEmailAlreadyInSheet) {
+    return res.status(409).json({
+      message: 'Index already in database.'
+    });
   }
 
-  await sheet.addRow([new Date().toLocaleString(), emailParsed, JSON.stringify(talks)]);
+  await sheet.addRow([new Date().toLocaleString(), indexNumber, JSON.stringify(talks)]);
 
-  return res.status(201);
+  return res.status(201).json({ message: 'Success' });
 }

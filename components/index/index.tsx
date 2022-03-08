@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Ticket from '../tickets/ticket';
+import RegisterConfirmation from '../register-confirmation/register-confirmation';
 import Layout from '../layout/layout';
 import Hero from './hero';
 import Form from '../utils/form';
@@ -38,12 +38,7 @@ export default function Conf({
               <Form />
             </>
           ) : (
-            <Ticket
-              username={userData.username}
-              name={userData.name}
-              ticketNumber={userData.ticketNumber}
-              sharePage={sharePage}
-            />
+            <RegisterConfirmation sharePage={sharePage} />
           )}
         </ConfContainer>
       </Layout>
