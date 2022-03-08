@@ -12,7 +12,7 @@ const LiveChat = ({ liveId }: Props) => {
     setIframeSrc(
       `https://www.youtube.com/live_chat?v=${liveId}&embed_domain=${currentUrl}&theme=dark`
     );
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
