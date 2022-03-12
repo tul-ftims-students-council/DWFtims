@@ -1,10 +1,14 @@
 .container {
-  margin: auto 0;
-  padding: 0 var(--space-4x);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
-@media (min-width: 768px) {
-  .container {
-    margin: auto;
-  }
+.column {
+  flex-direction: column;
+}
+
+.space-between {
+  justify-content: space-between;
 }

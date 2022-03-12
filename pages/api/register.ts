@@ -12,9 +12,15 @@ export default async function register(req: NextApiRequest, res: NextApiResponse
     });
   }
 
-  if (typeof indexNumber !== 'string' || !Array.isArray(talks) || !indexNumber || !talks) {
+  if (typeof indexNumber !== 'string' || !Array.isArray(talks) || !indexNumber) {
     return res.status(400).json({
       message: 'Invalid request body'
+    });
+  }
+
+  if (!talks.length) {
+    return res.status(400).json({
+      message: 'Musisz wybrać przynajmniej jeden wykład.'
     });
   }
 
@@ -22,7 +28,7 @@ export default async function register(req: NextApiRequest, res: NextApiResponse
 
   if (!isCorrectIndexNumber) {
     return res.status(400).json({
-      message: 'Invalid index number.'
+      message: 'Nieprawidłowy numer indeksu.'
     });
   }
 
@@ -43,7 +49,7 @@ export default async function register(req: NextApiRequest, res: NextApiResponse
 
   if (isEmailAlreadyInSheet) {
     return res.status(409).json({
-      message: 'Index already in database.'
+      message: 'Podałeś zarejestrowany numer indeksu.'
     });
   }
 

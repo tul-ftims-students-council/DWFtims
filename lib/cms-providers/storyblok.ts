@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import { Job, Sponsor, Stage, Speaker } from '@lib/types';
+import { Job, Sponsor, Stage, Speaker, Talk } from '@lib/types';
 
 const API_URL = 'https://gapi.storyblok.com/v1/api';
 const API_TOKEN = process.env.STORYBLOK_PREVIEW_TOKEN;
@@ -104,6 +104,21 @@ export async function getAllSpeakers(): Promise<Speaker[]> {
     return speaker;
   });
   const transformedData = transformResponse(responseData);
+  return transformedData;
+}
+
+export async function getAllTalks(): Promise<Talk[]> {
+  const data = await fetchCmsAPI(`
+  {
+    TalkItems(per_page: 100) {
+      items {
+        uuid
+        name
+      }
+    }
+  } 
+  `);
+  const transformedData = transformResponse(data.TalkItems.items);
   return transformedData;
 }
 

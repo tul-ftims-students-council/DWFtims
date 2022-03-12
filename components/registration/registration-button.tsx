@@ -1,20 +1,12 @@
-import Form from '@components/utils/form';
 import cn from 'classnames';
-import { useCallback, useState } from 'react';
 import styleUtils from '../utils/utils.module.css';
 import styles from './registration-button.module.css';
 
-export default function () {
-  const [isRegistrationStarted, setIsRegistrationStarted] = useState(false);
+interface Props {
+  handleStartingRegistration: () => void;
+}
 
-  const handleStartingRegistration = useCallback(() => {
-    setIsRegistrationStarted(true);
-  }, []);
-
-  if (isRegistrationStarted) {
-    return <Form />;
-  }
-
+export default function ({ handleStartingRegistration }: Props) {
   return (
     <div className={cn(styles.wrapper, styleUtils.appear, styleUtils['appear-fifth'])}>
       <button type="submit" className={styles.register} onClick={handleStartingRegistration}>
