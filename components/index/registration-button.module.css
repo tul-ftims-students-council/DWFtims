@@ -1,0 +1,33 @@
+.register {
+  padding: var(--space-4x);
+  height: 56px;
+  border-radius: var(--space-2x);
+  border: 1px solid var(--brand);
+  background: var(--brand);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--text-md);
+  letter-spacing: -0.02em;
+  outline: none;
+  font-weight: 500;
+  color: white;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-4x);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.only-for {
+  text-align: center;
+  color: var(--secondary-color);
+}
+.students {
+  color: #fff;
+}

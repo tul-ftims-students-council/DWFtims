@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import styleUtils from '../utils/utils.module.css';
 import styles from './hero.module.css';
-import { BRAND_NAME, DATE, SITE_DESCRIPTION } from '@lib/constants';
+import { DATE, SITE_DESCRIPTION } from '@lib/constants';
 
 export default function Hero() {
   return (
@@ -17,7 +17,7 @@ export default function Hero() {
         {SITE_DESCRIPTION}
       </h2>
       <h1 className={cn(styleUtils.appear, styleUtils['appear-third'], styles.hero)}>
-        DZIEŃ WYDZIAŁU FTIMS 
+        DZIEŃ WYDZIAŁU <br /> FTIMS
       </h1>
       <h2
         className={cn(

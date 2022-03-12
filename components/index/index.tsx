@@ -2,7 +2,7 @@ import { useState } from 'react';
 import RegisterConfirmation from '../register-confirmation/register-confirmation';
 import Layout from '../layout/layout';
 import Hero from './hero';
-import Form from '../utils/form';
+import RegistrationButton from './registration-button';
 
 import ConfContainer from '@components/conference/conf-container';
 
@@ -35,7 +35,7 @@ export default function Conf({
           {pageState === 'registration' && !sharePage ? (
             <>
               <Hero />
-              <Form />
+              <RegistrationButton />
             </>
           ) : (
             <RegisterConfirmation sharePage={sharePage} />
