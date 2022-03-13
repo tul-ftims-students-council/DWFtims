@@ -22,7 +22,7 @@ export default function Jobs({ jobs }: Props) {
   return (
     <Page meta={meta}>
       <Layout>
-        <Header hero="Career Fair" description={meta.description} />
+        <Header hero="Oferty pracy" description={meta.description} />
         <JobsGrid jobs={jobs} />
       </Layout>
     </Page>

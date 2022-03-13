@@ -1,3 +1,4 @@
+import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { SkipNavContent } from '@reach/skip-nav';
 
@@ -5,8 +6,14 @@ import Page from '@components/layout/page';
 import ConfContent from '@components/index';
 
 import { META_DESCRIPTION } from '@lib/constants';
+import { Talk } from '@lib/types';
+import { getallTalks } from '@lib/cms-api';
 
-export default function Conf() {
+type Props = {
+  allTalks: Talk[];
+};
+
+export default function Conf({ allTalks }: Props) {
   const { query } = useRouter();
   const meta = {
     title: 'Demo - Virtual Event Starter Kit',
@@ -25,8 +32,20 @@ export default function Conf() {
       <SkipNavContent />
       <ConfContent
         defaultUserData={defaultUserData}
+        allTalks={allTalks}
         defaultPageState={query.ticketNumber ? 'ticket' : 'registration'}
       />
     </Page>
   );
 }
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const allTalks = await getallTalks();
+
+  return {
+    props: {
+      allTalks
+    },
+    revalidate: 60
+  };
+};

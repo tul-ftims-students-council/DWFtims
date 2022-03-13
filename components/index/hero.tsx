@@ -1,35 +1,61 @@
 import cn from 'classnames';
 import styleUtils from '../utils/utils.module.css';
 import styles from './hero.module.css';
-import { BRAND_NAME, DATE, SITE_DESCRIPTION } from '@lib/constants';
+import { DATE, SITE_DESCRIPTION } from '@lib/constants';
 
-export default function Hero() {
+interface Props {
+  isRegistrationStarted: boolean;
+}
+
+export default function Hero({ isRegistrationStarted }: Props) {
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={cn(styles.wrapper, {
+        [styles['parcial-width']]: isRegistrationStarted
+      })}
+    >
       <h2
         className={cn(
           styleUtils.appear,
           styleUtils['appear-third'],
           styleUtils['show-on-mobile'],
-          styles.description
+          styles.description,
+          {
+            [styles['align-left']]: isRegistrationStarted
+          }
         )}
       >
         {SITE_DESCRIPTION}
       </h2>
-      <h1 className={cn(styleUtils.appear, styleUtils['appear-third'], styles.hero)}>
-        DZIEŃ WYDZIAŁU FTIMS 
+      <h1
+        className={cn(styleUtils.appear, styleUtils['appear-third'], styles.hero, {
+          [styles['align-left']]: isRegistrationStarted
+        })}
+      >
+        DZIEŃ WYDZIAŁU <br /> FTIMS
       </h1>
       <h2
         className={cn(
           styleUtils.appear,
           styleUtils['appear-third'],
           styleUtils['show-on-tablet'],
-          styles.description
+          styles.description,
+          { [styles['align-left']]: isRegistrationStarted }
         )}
       >
         {SITE_DESCRIPTION}
       </h2>
-      <div className={cn(styleUtils.appear, styleUtils['appear-fourth'], styles.info)}>
+      <div
+        className={cn(
+          {
+            [styles.justified]: !isRegistrationStarted,
+            [styles['align-left']]: isRegistrationStarted
+          },
+          styleUtils.appear,
+          styleUtils['appear-fourth'],
+          styles.info
+        )}
+      >
         <p>{DATE}</p>
         <div className={styles['description-separator']} />
         <p>

@@ -2,6 +2,10 @@
   margin-top: var(--space-12x);
 }
 
+.justified {
+  justify-content: center;
+}
+
 .hero {
   font-size: 52px;
   line-height: 1.15;
@@ -16,8 +20,8 @@
   line-height: 1.4;
   text-transform: uppercase;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   margin-bottom: var(--space-8x);
   color: var(--brand);
 }
@@ -43,12 +47,21 @@
   margin: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1280px) {
   .hero {
     font-size: 100px;
     line-height: 1;
     font-weight: 800;
     margin: 0 0px 40px;
+  }
+
+  .parcial-width {
+    width: 40%;
+  }
+
+  .align-left {
+    text-align: left;
+    justify-content: flex-start;
   }
 
   .info {
