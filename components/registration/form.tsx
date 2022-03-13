@@ -30,8 +30,6 @@ export default function Form({ sharePage, allTalks }: Props) {
     isEnabled: isCaptchaEnabled
   } = useCaptcha();
 
-  // TODO: handle successful registration
-
   const handleAddTalk = (talk: string) => {
     setSelectedTalks([...selectedTalks, talk]);
   };
@@ -152,19 +150,19 @@ export default function Form({ sharePage, allTalks }: Props) {
             {talk.title}
           </div>
         ))}
-        <div className={styles['submit-wrapper']}>
-          {formState === 'error' ? (
-            <>
-              <h5 className={styles.error}>{errorMsg}</h5>
-              <button
-                type="button"
-                className={cn(styles.submit, styles.register, styles.error)}
-                onClick={onTryAgainClick}
-              >
-                Spróbuj ponownie
-              </button>
-            </>
-          ) : (
+        {formState === 'error' ? (
+          <div className={styles['error-wrapper']}>
+            <h5 className={styles.error}>{errorMsg}</h5>
+            <button
+              type="button"
+              className={cn(styles.submit, styles.register, styles.error)}
+              onClick={onTryAgainClick}
+            >
+              Spróbuj ponownie
+            </button>
+          </div>
+        ) : (
+          <div className={styles['submit-wrapper']}>
             <button
               type="submit"
               className={cn(styles.submit, styles[formState])}
@@ -172,8 +170,8 @@ export default function Form({ sharePage, allTalks }: Props) {
             >
               {formState === 'loading' ? <LoadingDots size={4} /> : <>Zapisz mnie!</>}
             </button>
-          )}
-        </div>
+          </div>
+        )}
       </div>
       <Captcha ref={captchaRef} onVerify={handleRegister} />
     </form>
