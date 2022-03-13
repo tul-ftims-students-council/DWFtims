@@ -19,12 +19,13 @@ if (process.env.DATOCMS_READ_ONLY_API_TOKEN) {
 } else if (process.env.STRAPI_API_URL) {
   // cmsApi = strapiApi;
 } else {
-  // cmsApi = {
-  //   getAllSpeakers: () => Promise.resolve([]),
-  //   getAllStages: () => Promise.resolve([]),
-  //   getAllSponsors: () => Promise.resolve([]),
-  //   getAllJobs: () => Promise.resolve([])
-  // };
+  cmsApi = {
+    getAllSpeakers: () => Promise.resolve([]),
+    getAllStages: () => Promise.resolve([]),
+    getAllTalks: () => Promise.resolve([]),
+    getAllSponsors: () => Promise.resolve([]),
+    getAllJobs: () => Promise.resolve([])
+  };
 }
 
 export async function getAllSpeakers(): Promise<Speaker[]> {
