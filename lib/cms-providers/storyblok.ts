@@ -24,7 +24,6 @@ function transformResponse(response: any[], _speakers?: any) {
         }
 
         if (key === '_uid') {
-          console.log(item);
           item.id = item[key];
           delete item[key];
         }
