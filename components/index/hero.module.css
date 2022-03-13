@@ -6,10 +6,6 @@
   justify-content: center;
 }
 
-.parcial-width {
-  width: 40%;
-}
-
 .hero {
   font-size: 52px;
   line-height: 1.15;
@@ -25,6 +21,7 @@
   text-transform: uppercase;
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: var(--space-8x);
   color: var(--brand);
 }
@@ -50,16 +47,24 @@
   margin: 0;
 }
 
-.align-left {
-  text-align: left;
-}
-
 @media (min-width: 768px) {
   .hero {
     font-size: 100px;
     line-height: 1;
     font-weight: 800;
     margin: 0 0px 40px;
+  }
+
+  .info {
+    justify-content: flex-start;
+  }
+
+  .parcial-width {
+    width: 40%;
+  }
+
+  .align-left {
+    text-align: left;
   }
 
   .info {
