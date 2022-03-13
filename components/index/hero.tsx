@@ -19,7 +19,10 @@ export default function Hero({ isRegistrationStarted }: Props) {
           styleUtils.appear,
           styleUtils['appear-third'],
           styleUtils['show-on-mobile'],
-          styles.description
+          styles.description,
+          {
+            [styles['align-left']]: isRegistrationStarted
+          }
         )}
       >
         {SITE_DESCRIPTION}
@@ -36,7 +39,8 @@ export default function Hero({ isRegistrationStarted }: Props) {
           styleUtils.appear,
           styleUtils['appear-third'],
           styleUtils['show-on-tablet'],
-          styles.description
+          styles.description,
+          { [styles['align-left']]: isRegistrationStarted }
         )}
       >
         {SITE_DESCRIPTION}
@@ -44,7 +48,8 @@ export default function Hero({ isRegistrationStarted }: Props) {
       <div
         className={cn(
           {
-            [styles.justified]: !isRegistrationStarted
+            [styles.justified]: !isRegistrationStarted,
+            [styles['align-left']]: isRegistrationStarted
           },
           styleUtils.appear,
           styleUtils['appear-fourth'],

@@ -55,16 +55,13 @@
     margin: 0 0px 40px;
   }
 
-  .info {
-    justify-content: flex-start;
-  }
-
   .parcial-width {
     width: 40%;
   }
 
   .align-left {
     text-align: left;
+    justify-content: flex-start;
   }
 
   .info {
