@@ -10,14 +10,8 @@ let cmsApi: {
   getAllTalks: () => Promise<Talk[]>;
 };
 
-if (process.env.DATOCMS_READ_ONLY_API_TOKEN) {
-  // cmsApi = datoCmsApi;
-} else if (process.env.CONTENTFUL_ACCESS_TOKEN && process.env.CONTENTFUL_SPACE_ID) {
-  // cmsApi = contentfulApi;
-} else if (process.env.STORYBLOK_PREVIEW_TOKEN) {
+if (process.env.STORYBLOK_PREVIEW_TOKEN) {
   cmsApi = storyblokApi;
-} else if (process.env.STRAPI_API_URL) {
-  // cmsApi = strapiApi;
 } else {
   cmsApi = {
     getAllSpeakers: () => Promise.resolve([]),

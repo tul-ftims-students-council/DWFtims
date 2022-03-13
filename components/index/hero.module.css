@@ -47,13 +47,6 @@
   margin: 0;
 }
 
-/* @media (min-width: 1280px) {
-  .align-left {
-    text-align: left;
-    justify-content: flex-start;
-  }
-} */
-
 @media (min-width: 1280px) {
   .hero {
     font-size: 100px;
