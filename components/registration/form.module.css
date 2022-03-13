@@ -49,23 +49,33 @@
 
 .input-label {
   background-color: var(--gray);
+  background-clip: content-box, border-box;
   border-radius: var(--space-2x);
-  border: 1px solid transparent;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
   display: flex;
   align-items: center;
+  padding: 1px;
   margin-bottom: var(--space-2x);
   width: 100%;
   cursor: pointer;
 }
 
-.input-label:hover {
-  background-color: #33373c;
+.spacing-around {
+  padding: var(--space-4x);
 }
 
 .input-label.focused {
+  outline: none;
+  background-image: linear-gradient(#33373c, #33373c),
+    linear-gradient(to right, var(--brand), var(--brand));
+}
+
+.input-label:hover {
   background-color: #33373c;
 }
+/*
+.input-label.focused {
+  background-color: #33373c;
+} */
 
 .error {
   width: 40%;

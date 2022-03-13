@@ -147,7 +147,7 @@ export default function Form({ sharePage, allTalks }: Props) {
             })}
             onClick={() => handleTalkOnClick(talk.title)}
           >
-            {talk.title}
+            <div className={styles['spacing-around']}>{talk.title}</div>
           </div>
         ))}
         {formState === 'error' ? (
