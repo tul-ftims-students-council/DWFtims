@@ -17,26 +17,29 @@ function transformResponse(response: any[], _speakers?: any) {
   content.map((item: any) => {
     Object.keys(item).map(key => {
       // assign the urls directly if not an image
-      const noAssign = ['image', 'logo', 'cardImage'];
-      if (item[key].url && noAssign.indexOf(key) === -1) {
-        item[key] = item[key].url;
-      }
+      if (item[key]) {
+        const noAssign = ['image', 'logo', 'cardImage'];
+        if (item[key].url && noAssign.indexOf(key) === -1) {
+          item[key] = item[key].url;
+        }
 
-      if (key === '_uid') {
-        item.id = item[key];
-        delete item[key];
-      }
+        if (key === '_uid') {
+          console.log(item);
+          item.id = item[key];
+          delete item[key];
+        }
 
-      // remove nesting from schedule and assign speakers
-      if (key === 'schedule') {
-        item[key] = item[key].map((slot: { content: any; speaker: any }) => {
-          slot = slot.content;
-          const speakers = _speakers?.filter(
-            (speaker: any) => slot.speaker.indexOf(speaker.uuid) !== -1
-          );
-          slot.speaker = speakers;
-          return slot;
-        });
+        // remove nesting from schedule and assign speakers
+        if (key === 'schedule') {
+          item[key] = item[key].map((slot: { content: any; speaker: any }) => {
+            slot = slot.content;
+            const speakers = _speakers?.filter(
+              (speaker: any) => slot.speaker.indexOf(speaker.uuid) !== -1
+            );
+            slot.speaker = speakers;
+            return slot;
+          });
+        }
       }
     });
   });
@@ -113,10 +116,19 @@ export async function getAllTalks(): Promise<Talk[]> {
     TalkItems(per_page: 100) {
       items {
         uuid
-        name
+        content {
+          title
+          title
+          description
+          start
+          end
+          speaker {
+            uuid
+          }
+        }
       }
     }
-  } 
+  }
   `);
   const transformedData = transformResponse(data.TalkItems.items);
   return transformedData;

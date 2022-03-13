@@ -5,14 +5,17 @@
   flex-direction: column;
   margin-bottom: 12px;
   gap: 12px;
-  width: 40%;
+  min-width: 40%;
   border-radius: var(--space-2x);
   background: #111111;
   padding: 1px;
   background-color: var(--sidebar);
   background-clip: content-box, border-box;
   background-image: linear-gradient(#111111, #111111), linear-gradient(to right, #333333, #333333);
-  height: 80%;
+}
+
+.full-width {
+  width: 100%;
 }
 
 @media (min-width: 1200px) {
@@ -43,7 +46,15 @@
   border-radius: var(--space-2x);
   border: 1px solid transparent;
   transition: border-color 0.2s ease, background-color 0.2s ease;
-  display: block;
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-2x);
+  width: 100%;
+  cursor: pointer;
+}
+
+.input-label:hover {
+  background-color: #33373c;
 }
 
 .input-label.focused {
@@ -68,9 +79,16 @@
   position: relative;
   max-width: 400px;
   width: 100%;
+  padding: var(--space-4x) var(--space-8x);
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+}
+
+.submit-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
 }
 
 @media (min-width: 768px) {
@@ -126,8 +144,8 @@
   overflow: hidden;
 }
 
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
   .form-row {
     margin: 0;
   }
-}
+} */

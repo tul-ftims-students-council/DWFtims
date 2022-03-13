@@ -17,7 +17,7 @@ type Props = {
 
 export default function Form({ sharePage, allTalks }: Props) {
   const [indexNumber, setIndexNumber] = useState('');
-  const [selectedTalks, setSelectedTalks] = useState([]);
+  const [selectedTalks, setSelectedTalks] = useState<string[]>([]);
   const [errorMsg, setErrorMsg] = useState('');
   const [focused, setFocused] = useState(false);
   const [formState, setFormState] = useState<FormState>('default');
@@ -27,6 +27,24 @@ export default function Form({ sharePage, allTalks }: Props) {
     reset: resetCaptcha,
     isEnabled: isCaptchaEnabled
   } = useCaptcha();
+
+  const handleAddTalk = (talk: string) => {
+    setSelectedTalks([...selectedTalks, talk]);
+  };
+
+  const handleRemoveTalk = (talk: string) => {
+    const filteredTalks = selectedTalks.filter(t => t !== talk);
+    setSelectedTalks(filteredTalks);
+  };
+
+  const handleTalkOnClick = (talk: string) => {
+    const isTalkInSelectedTalks = selectedTalks.includes(talk);
+    if (isTalkInSelectedTalks) {
+      handleRemoveTalk(talk);
+    } else {
+      handleAddTalk(talk);
+    }
+  };
 
   const handleRegister = useCallback(async () => {
     try {
@@ -108,8 +126,11 @@ export default function Form({ sharePage, allTalks }: Props) {
       onSubmit={onSubmit}
     >
       <div className={styles['form-row']}>
+        <div className={styles['full-width']}>
+          <h3>Podaj numer indeksu</h3>
+        </div>
         <label
-          htmlFor="email-input-field"
+          htmlFor="index-input-field"
           className={cn(styles['input-label'], {
             [styles.focused]: focused
           })}
@@ -129,13 +150,28 @@ export default function Form({ sharePage, allTalks }: Props) {
             required
           />
         </label>
-        <button
-          type="submit"
-          className={cn(styles.submit, styles[formState])}
-          disabled={formState === 'loading'}
-        >
-          {formState === 'loading' ? <LoadingDots size={4} /> : <>Zapisz mnie!</>}
-        </button>
+        <div className={styles['full-width']}>
+          <h3>Wybierz wykłady</h3>
+        </div>
+        {allTalks.map(talk => (
+          <div
+            className={cn(styles['input-label'], styles.input, {
+              [styles.focused]: selectedTalks.includes(talk.title)
+            })}
+            onClick={() => handleTalkOnClick(talk.title)}
+          >
+            {talk.title}
+          </div>
+        ))}
+        <div className={styles['submit-wrapper']}>
+          <button
+            type="submit"
+            className={cn(styles.submit, styles[formState])}
+            disabled={formState === 'loading'}
+          >
+            {formState === 'loading' ? <LoadingDots size={4} /> : <>Zapisz mnie!</>}
+          </button>
+        </div>
       </div>
       <Captcha ref={captchaRef} onVerify={handleRegister} />
     </form>

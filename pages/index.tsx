@@ -14,8 +14,6 @@ type Props = {
 };
 
 export default function Conf({ allTalks }: Props) {
-  console.log(allTalks);
-
   const { query } = useRouter();
   const meta = {
     title: 'Demo - Virtual Event Starter Kit',
