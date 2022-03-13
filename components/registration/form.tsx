@@ -28,6 +28,8 @@ export default function Form({ sharePage, allTalks }: Props) {
     isEnabled: isCaptchaEnabled
   } = useCaptcha();
 
+  // TODO: handle successful registration
+
   const handleAddTalk = (talk: string) => {
     setSelectedTalks([...selectedTalks, talk]);
   };
@@ -99,26 +101,7 @@ export default function Form({ sharePage, allTalks }: Props) {
     [resetCaptcha]
   );
 
-  return formState === 'error' ? (
-    <div
-      className={cn(styles.form, styleUtils.appear, {
-        [styles['share-page']]: sharePage
-      })}
-    >
-      <div className={styles['form-row']}>
-        <div className={cn(styles['input-label'], styles.error)}>
-          <div className={cn(styles.input, styles['input-text'])}>{errorMsg}</div>
-          <button
-            type="button"
-            className={cn(styles.submit, styles.register, styles.error)}
-            onClick={onTryAgainClick}
-          >
-            Spróbuj ponownie
-          </button>
-        </div>
-      </div>
-    </div>
-  ) : (
+  return (
     <form
       className={cn(styles.form, styleUtils.appear, {
         [styles['share-page']]: sharePage
@@ -164,13 +147,26 @@ export default function Form({ sharePage, allTalks }: Props) {
           </div>
         ))}
         <div className={styles['submit-wrapper']}>
-          <button
-            type="submit"
-            className={cn(styles.submit, styles[formState])}
-            disabled={formState === 'loading'}
-          >
-            {formState === 'loading' ? <LoadingDots size={4} /> : <>Zapisz mnie!</>}
-          </button>
+          {formState === 'error' ? (
+            <>
+              <h5 className={styles.error}>{errorMsg}</h5>
+              <button
+                type="button"
+                className={cn(styles.submit, styles.register, styles.error)}
+                onClick={onTryAgainClick}
+              >
+                Spróbuj ponownie
+              </button>
+            </>
+          ) : (
+            <button
+              type="submit"
+              className={cn(styles.submit, styles[formState])}
+              disabled={formState === 'loading'}
+            >
+              {formState === 'loading' ? <LoadingDots size={4} /> : <>Zapisz mnie!</>}
+            </button>
+          )}
         </div>
       </div>
       <Captcha ref={captchaRef} onVerify={handleRegister} />

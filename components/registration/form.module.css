@@ -61,8 +61,9 @@
   background-color: #33373c;
 }
 
-.input-label.error {
-  background: red;
+.error {
+  width: 50%;
+  color: red;
 }
 
 .input-label.success {
