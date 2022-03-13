@@ -76,7 +76,7 @@ export default function Form({ sharePage, allTalks }: Props) {
       setErrorMsg(message);
       setFormState('error');
     }
-  }, [indexNumber, selectedTalks, setPageState]);
+  }, [indexNumber, selectedTalks, setPageState, setUserData]);
 
   const onSubmit = useCallback(
     (e: React.FormEvent) => {
