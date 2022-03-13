@@ -7,6 +7,7 @@ import styles from './form.module.css';
 import { register } from '@lib/user-api';
 import Captcha, { useCaptcha } from '../utils/captcha';
 import { Talk } from '@lib/types';
+import useConfData from '@lib/hooks/use-conf-data';
 
 type FormState = 'default' | 'loading' | 'error';
 
@@ -21,6 +22,7 @@ export default function Form({ sharePage, allTalks }: Props) {
   const [errorMsg, setErrorMsg] = useState('');
   const [focused, setFocused] = useState(false);
   const [formState, setFormState] = useState<FormState>('default');
+  const { setPageState, setUserData } = useConfData();
   const {
     ref: captchaRef,
     execute: executeCaptcha,
@@ -55,6 +57,10 @@ export default function Form({ sharePage, allTalks }: Props) {
       if (!res.ok) {
         throw new FormError(res);
       }
+
+      setUserData({ indexNumber });
+
+      setPageState('ticket');
     } catch (err) {
       let message = 'Ups! coś poszło nie tak.';
 
@@ -70,7 +76,7 @@ export default function Form({ sharePage, allTalks }: Props) {
       setErrorMsg(message);
       setFormState('error');
     }
-  }, [indexNumber, selectedTalks]);
+  }, [indexNumber, selectedTalks, setPageState]);
 
   const onSubmit = useCallback(
     (e: React.FormEvent) => {

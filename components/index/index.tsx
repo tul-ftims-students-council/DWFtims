@@ -47,7 +47,9 @@ export default function Conf({
               {isRegistrationStarted ? (
                 <Form allTalks={allTalks} />
               ) : (
-                <RegistrationButton handleStartingRegistration={handleStartingRegistration} />
+                userData.indexNumber && (
+                  <RegistrationButton handleStartingRegistration={handleStartingRegistration} />
+                )
               )}
             </>
           ) : (

@@ -4,9 +4,7 @@ export type PageState = 'registration' | 'ticket';
 
 export type UserData = {
   id?: string;
-  ticketNumber?: number;
-  username?: string;
-  name?: string;
+  indexNumber?: string;
 };
 
 type ConfDataContextType = {
