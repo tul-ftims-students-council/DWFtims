@@ -10,7 +10,7 @@ export default function ({ handleStartingRegistration }: Props) {
   return (
     <div className={cn(styles.wrapper, styleUtils.appear, styleUtils['appear-fifth'])}>
       <button type="submit" className={styles.register} onClick={handleStartingRegistration}>
-        Zgarnij upsrawiedliwienie
+        Zgarnij usprawiedliwienie
       </button>
       <div className={styles['only-for']}>
         Tylko dla <span className={styles.students}>Studentów</span>.
