@@ -8,6 +8,13 @@ interface Props {
 }
 
 export default function Hero({ isRegistrationStarted }: Props) {
+  const [day, month, year] = DATE.split('.');
+  const currentDate = new Date();
+  const currentDay = currentDate.getDate().toString();
+  const currentMonth = (currentDate.getMonth() + 1).toString();
+  const currentYear = currentDate.getFullYear().toString();
+  const isOnline = day === currentDay && month === currentMonth && year === currentYear;
+
   return (
     <div
       className={cn(styles.wrapper, {
@@ -59,7 +66,7 @@ export default function Hero({ isRegistrationStarted }: Props) {
         <p>{DATE}</p>
         <div className={styles['description-separator']} />
         <p>
-          <strong>Online</strong>
+          <strong>{isOnline ? 'Online' : 'Offline'}</strong>
         </p>
       </div>
     </div>
