@@ -1,3 +1,10 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
 .register {
   padding: var(--space-4x);
   height: 56px;
@@ -20,13 +27,6 @@
 
 .register:hover {
   background-color: var(--brand-hover);
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
 }
 
 .only-for {

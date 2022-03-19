@@ -39,6 +39,7 @@
 }
 
 .move-to-left {
+  opacity: 1;
   animation: move-to-left var(--appear-time) var(--cubic-bezier-animation) forwards;
 }
 

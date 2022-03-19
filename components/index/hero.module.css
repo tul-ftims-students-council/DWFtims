@@ -1,17 +1,19 @@
 .wrapper {
   margin-top: var(--space-12x);
-}
-
-.justified {
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
 }
 
 .hero {
-  font-size: 52px;
+  font-size: 50px;
   line-height: 1.15;
   letter-spacing: -0.05em;
   font-weight: 700;
-  text-align: center;
+}
+
+.margin-bottom {
   margin: 0 0 25px;
 }
 
@@ -49,9 +51,12 @@
 
 @media (min-width: 1280px) {
   .hero {
-    font-size: 100px;
+    font-size: 90px;
     line-height: 1;
     font-weight: 800;
+  }
+
+  .margin-bottom {
     margin: 0 0px 40px;
   }
 
