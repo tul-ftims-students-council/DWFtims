@@ -10,8 +10,7 @@ interface HeaderWrapperProps {
 const HeaderWrapper = ({ isRegistrationStarted, children }: HeaderWrapperProps) => (
   <div
     className={cn(styles.container, {
-      [styles.hidden]: isRegistrationStarted,
-      [styles['align-start']]: isRegistrationStarted
+      [styles.hidden]: isRegistrationStarted
     })}
   >
     {children}

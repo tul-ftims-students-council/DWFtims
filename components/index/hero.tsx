@@ -9,11 +9,7 @@ interface Props {
 
 export default function Hero({ isRegistrationStarted }: Props) {
   return (
-    <div
-      className={cn(styles.wrapper, {
-        [styles['parcial-width']]: isRegistrationStarted
-      })}
-    >
+    <div className={styles.wrapper}>
       <h2
         className={cn(
           styleUtils.appear,

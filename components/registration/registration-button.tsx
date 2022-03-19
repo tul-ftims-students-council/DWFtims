@@ -18,10 +18,20 @@ const RegistrationButton = ({
         [styleUtils.disappear]: isRegistrationStarted
       })}
     >
-      <button type="submit" className={styles.register} onClick={handleStartingRegistration}>
+      <button
+        type="submit"
+        className={cn(styles.register, styleUtils['center-el'], {
+          [styleUtils['move-to-left']]: isRegistrationStarted
+        })}
+        onClick={handleStartingRegistration}
+      >
         Zgarnij upsrawiedliwienie
       </button>
-      <div className={styles['only-for']}>
+      <div
+        className={cn(styles['only-for'], styleUtils['center-el'], {
+          [styleUtils['move-to-left']]: isRegistrationStarted
+        })}
+      >
         Tylko dla <span className={styles.students}>Studentów</span>.
       </div>
     </div>
