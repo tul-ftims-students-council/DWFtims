@@ -16,7 +16,7 @@ type Props = {
 export default function Conf({ allTalks }: Props) {
   const { query } = useRouter();
   const meta = {
-    title: 'Demo - Virtual Event Starter Kit',
+    title: 'Dzień wydziału FTIMS',
     description: META_DESCRIPTION
   };
   const ticketNumber = query.ticketNumber?.toString();
