@@ -46,7 +46,10 @@ export default function Conf({
         <ConfContainer isRegistrationStarted={isRegistrationStarted}>
           {pageState === 'registration' && !sharePage ? (
             <>
-              <HeaderWrapper isRegistrationStarted={isRegistrationStarted}>
+              <HeaderWrapper
+                isRegistrationStarted={isRegistrationStarted}
+                isFormVisible={isFormVisible}
+              >
                 <Hero isRegistrationStarted={isRegistrationStarted} />
                 {!userData.indexNumber && (
                   <RegistrationButton

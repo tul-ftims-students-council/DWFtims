@@ -58,16 +58,16 @@
   }
 }
 
-@keyframes move-to-left {
-  to {
-    left: 0;
-    transform: translateX(0);
-  }
-}
-
 @media (min-width: 1200px) {
   .hide-on-desktop {
     display: none;
+  }
+
+  @keyframes move-to-left {
+    to {
+      left: 0;
+      transform: translateX(0);
+    }
   }
 }
 

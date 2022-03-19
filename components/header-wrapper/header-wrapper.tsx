@@ -4,13 +4,15 @@ import styles from './header-wrapper.module.css';
 
 interface HeaderWrapperProps {
   isRegistrationStarted: boolean;
+  isFormVisible: boolean;
   children: ReactNode;
 }
 
-const HeaderWrapper = ({ isRegistrationStarted, children }: HeaderWrapperProps) => (
+const HeaderWrapper = ({ isRegistrationStarted, isFormVisible, children }: HeaderWrapperProps) => (
   <div
     className={cn(styles.container, {
-      [styles.hidden]: isRegistrationStarted
+      [styles.hidden]: isRegistrationStarted,
+      [styles['display-none']]: isFormVisible
     })}
   >
     {children}
