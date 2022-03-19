@@ -27,9 +27,11 @@ export default function Conf({
   const [userData, setUserData] = useState<UserData>(defaultUserData);
   const [pageState, setPageState] = useState<PageState>(defaultPageState);
   const [isRegistrationStarted, setIsRegistrationStarted] = useState(false);
+  const [isFormVisible, setIsFormVisible] = useState(false);
 
   const handleStartingRegistration = useCallback(() => {
     setIsRegistrationStarted(true);
+    setTimeout(() => setIsFormVisible(true), 800);
   }, []);
 
   return (
@@ -53,7 +55,7 @@ export default function Conf({
                   />
                 )}
               </HeaderWrapper>
-              {isRegistrationStarted && <Form allTalks={allTalks} />}
+              {isFormVisible && <Form allTalks={allTalks} />}
             </>
           ) : (
             <RegisterConfirmation sharePage={sharePage} />
