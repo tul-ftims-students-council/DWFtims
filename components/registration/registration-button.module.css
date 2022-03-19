@@ -22,12 +22,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  visibility: visible;
+  transition: opacity 1s;
 }
 
 .only-for {
   text-align: center;
   color: var(--secondary-color);
 }
+
 .students {
   color: #fff;
 }

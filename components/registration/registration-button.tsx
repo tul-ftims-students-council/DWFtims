@@ -2,13 +2,22 @@ import cn from 'classnames';
 import styleUtils from '../utils/utils.module.css';
 import styles from './registration-button.module.css';
 
-interface Props {
+interface RegistrationButtonProps {
+  isRegistrationStarted: boolean;
   handleStartingRegistration: () => void;
 }
 
-export default function ({ handleStartingRegistration }: Props) {
+const RegistrationButton = ({
+  isRegistrationStarted,
+  handleStartingRegistration
+}: RegistrationButtonProps) => {
   return (
-    <div className={cn(styles.wrapper, styleUtils.appear, styleUtils['appear-fifth'])}>
+    <div
+      className={cn(styles.wrapper, styleUtils.appear, styleUtils['appear-fifth'], {
+        [styles['wrapper-hidden']]: isRegistrationStarted,
+        [styleUtils.disappear]: isRegistrationStarted
+      })}
+    >
       <button type="submit" className={styles.register} onClick={handleStartingRegistration}>
         Zgarnij upsrawiedliwienie
       </button>
@@ -17,4 +26,6 @@ export default function ({ handleStartingRegistration }: Props) {
       </div>
     </div>
   );
-}
+};
+
+export default RegistrationButton;

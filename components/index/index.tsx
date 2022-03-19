@@ -6,6 +6,7 @@ import Hero from './hero';
 import RegistrationButton from '@components/registration/registration-button';
 import ConfContainer from '@components/conference/conf-container';
 import Form from '@components/registration/form';
+import HeaderWrapper from '@components/header-wrapper/header-wrapper';
 
 import { PageState, ConfDataContext, UserData } from '@lib/hooks/use-conf-data';
 import { Talk } from '@lib/types';
@@ -43,14 +44,16 @@ export default function Conf({
         <ConfContainer isRegistrationStarted={isRegistrationStarted}>
           {pageState === 'registration' && !sharePage ? (
             <>
-              <Hero isRegistrationStarted={isRegistrationStarted} />
-              {isRegistrationStarted ? (
-                <Form allTalks={allTalks} />
-              ) : (
-                !userData.indexNumber && (
-                  <RegistrationButton handleStartingRegistration={handleStartingRegistration} />
-                )
-              )}
+              <HeaderWrapper isRegistrationStarted={isRegistrationStarted}>
+                <Hero isRegistrationStarted={isRegistrationStarted} />
+                {!userData.indexNumber && (
+                  <RegistrationButton
+                    isRegistrationStarted={isRegistrationStarted}
+                    handleStartingRegistration={handleStartingRegistration}
+                  />
+                )}
+              </HeaderWrapper>
+              {isRegistrationStarted && <Form allTalks={allTalks} />}
             </>
           ) : (
             <RegisterConfirmation sharePage={sharePage} />

@@ -1,6 +1,6 @@
 .appear {
   opacity: 0;
-  animation: appear 0.8s cubic-bezier(0.1, 0, 0.175, 1) forwards;
+  animation: appear var(--appear-time) var(--cubic-bezier-animation) forwards;
 }
 
 .appear-first {
@@ -30,6 +30,19 @@
 @keyframes appear {
   to {
     opacity: 1;
+  }
+}
+
+.disappear {
+  animation: disappear var(--appear-time) var(--cubic-bezier-animation) forwards;
+}
+
+@keyframes disappear {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 

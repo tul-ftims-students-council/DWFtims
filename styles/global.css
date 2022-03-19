@@ -40,6 +40,9 @@
   --sidebar: #0e0e10;
   --header-height: 72px;
   --brand: #845ef7;
+
+  --cubic-bezier-animation: cubic-bezier(0.1, 0, 0.175, 1);
+  --appear-time: 0.8s;
 }
 
 html {
