@@ -138,7 +138,7 @@ export default function Form({ sharePage, allTalks }: Props) {
           />
         </label>
         <div className={styles['full-width']}>
-          <h3>Wybierz wykłady</h3>
+          <h3 className={styles['choose-label']}>Wybierz wykłady</h3>
         </div>
         {allTalks.map(talk => (
           <div

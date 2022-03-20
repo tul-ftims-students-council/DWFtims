@@ -1,6 +1,6 @@
 .appear {
   opacity: 0;
-  animation: appear 0.8s cubic-bezier(0.1, 0, 0.175, 1) forwards;
+  animation: appear var(--appear-time) var(--cubic-bezier-animation) forwards;
 }
 
 .appear-first {
@@ -27,15 +27,47 @@
   animation-delay: 2.4s;
 }
 
+.disappear {
+  animation: disappear var(--appear-time) var(--cubic-bezier-animation) forwards;
+}
+
+.center-el {
+  position: relative;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.move-to-left {
+  opacity: 1;
+  animation: move-to-left var(--appear-time) var(--cubic-bezier-animation) forwards;
+}
+
 @keyframes appear {
   to {
     opacity: 1;
   }
 }
 
-@media (min-width: 1200px) {
+@keyframes disappear {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 1280px) {
   .hide-on-desktop {
     display: none;
+  }
+
+  @keyframes move-to-left {
+    to {
+      left: 0;
+      transform: translateX(0);
+    }
   }
 }
 

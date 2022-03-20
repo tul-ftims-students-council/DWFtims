@@ -11,8 +11,7 @@ export default function ConfContainer({ children, isRegistrationStarted }: Props
   return (
     <div
       className={cn(styles.container, {
-        [styles.column]: !isRegistrationStarted,
-        [styles['space-between']]: isRegistrationStarted
+        [styles.column]: !isRegistrationStarted
       })}
     >
       {children}

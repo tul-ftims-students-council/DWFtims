@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  visibility: visible;
+  transition: transform var(--appear-time), visibility var(--appear-time),
+    opacity var(--appear-time);
+  transition-timing-function: var(--cubic-bezier-animation);
+}
+
+@media screen and (max-width: 1280px) {
+  .hidden {
+    transform: scale(0);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .display-none {
+    display: none;
+  }
+}

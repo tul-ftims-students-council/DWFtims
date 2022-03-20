@@ -16,11 +16,7 @@ export default function Hero({ isRegistrationStarted }: Props) {
   const isOnline = day === currentDay && month === currentMonth && year === currentYear;
 
   return (
-    <div
-      className={cn(styles.wrapper, {
-        [styles['parcial-width']]: isRegistrationStarted
-      })}
-    >
+    <div className={styles.wrapper}>
       <h2
         className={cn(
           styleUtils.appear,
@@ -35,11 +31,31 @@ export default function Hero({ isRegistrationStarted }: Props) {
         {SITE_DESCRIPTION}
       </h2>
       <h1
-        className={cn(styleUtils.appear, styleUtils['appear-third'], styles.hero, {
-          [styles['align-left']]: isRegistrationStarted
-        })}
+        className={cn(
+          styleUtils.appear,
+          styleUtils['appear-third'],
+          styles.hero,
+          styleUtils['center-el'],
+          {
+            [styleUtils['move-to-left']]: isRegistrationStarted
+          }
+        )}
       >
-        DZIEŃ WYDZIAŁU <br /> FTIMS
+        DZIEŃ WYDZIAŁU
+      </h1>
+      <h1
+        className={cn(
+          styleUtils.appear,
+          styleUtils['appear-third'],
+          styles.hero,
+          styles['margin-bottom'],
+          styleUtils['center-el'],
+          {
+            [styleUtils['move-to-left']]: isRegistrationStarted
+          }
+        )}
+      >
+        FTIMS
       </h1>
       <h2
         className={cn(
@@ -55,9 +71,9 @@ export default function Hero({ isRegistrationStarted }: Props) {
       <div
         className={cn(
           {
-            [styles.justified]: !isRegistrationStarted,
-            [styles['align-left']]: isRegistrationStarted
+            [styleUtils['move-to-left']]: isRegistrationStarted
           },
+          styleUtils['center-el'],
           styleUtils.appear,
           styleUtils['appear-fourth'],
           styles.info

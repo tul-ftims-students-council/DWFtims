@@ -1,8 +1,15 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
 .register {
   padding: var(--space-4x);
   height: 56px;
   border-radius: var(--space-2x);
-  border: 1px solid var(--brand);
+  border: none;
   background: var(--brand);
   cursor: pointer;
   font-family: inherit;
@@ -18,16 +25,15 @@
   margin-bottom: var(--space-4x);
 }
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.register:hover {
+  background-color: var(--brand-hover);
 }
 
 .only-for {
   text-align: center;
   color: var(--secondary-color);
 }
+
 .students {
   color: #fff;
 }

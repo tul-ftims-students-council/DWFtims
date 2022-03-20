@@ -2,19 +2,40 @@ import cn from 'classnames';
 import styleUtils from '../utils/utils.module.css';
 import styles from './registration-button.module.css';
 
-interface Props {
+interface RegistrationButtonProps {
+  isRegistrationStarted: boolean;
   handleStartingRegistration: () => void;
 }
 
-export default function ({ handleStartingRegistration }: Props) {
+const RegistrationButton = ({
+  isRegistrationStarted,
+  handleStartingRegistration
+}: RegistrationButtonProps) => {
   return (
-    <div className={cn(styles.wrapper, styleUtils.appear, styleUtils['appear-fifth'])}>
-      <button type="submit" className={styles.register} onClick={handleStartingRegistration}>
-        Zgarnij usprawiedliwienie
+    <div
+      className={cn(styles.wrapper, styleUtils.appear, styleUtils['appear-fifth'], {
+        [styles['wrapper-hidden']]: isRegistrationStarted,
+        [styleUtils.disappear]: isRegistrationStarted
+      })}
+    >
+      <button
+        type="submit"
+        className={cn(styles.register, styleUtils['center-el'], {
+          [styleUtils['move-to-left']]: isRegistrationStarted
+        })}
+        onClick={handleStartingRegistration}
+      >
+        Zgarnij upsrawiedliwienie
       </button>
-      <div className={styles['only-for']}>
+      <div
+        className={cn(styles['only-for'], styleUtils['center-el'], {
+          [styleUtils['move-to-left']]: isRegistrationStarted
+        })}
+      >
         Tylko dla <span className={styles.students}>Studentów</span>.
       </div>
     </div>
   );
-}
+};
+
+export default RegistrationButton;
