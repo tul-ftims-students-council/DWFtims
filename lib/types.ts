@@ -41,14 +41,11 @@ export type Sponsor = {
   description: string;
   slug: string;
   website: string;
-  callToAction: string;
-  callToActionLink: string;
   links: SponsorLink[];
-  discord: string;
   tier: string;
+  tierRank: number;
   cardImage: Image;
   logo: Image;
-  youtubeSlug: string;
 };
 
 export type SponsorLink = {
