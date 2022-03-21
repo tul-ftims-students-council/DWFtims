@@ -64,16 +64,20 @@ export default function SponsorsGrid({ sponsors }: Props) {
 
   return (
     <>
-      {Object.keys(groupedByTier).map(tier => (
-        <>
-          <h2 className={styles.tier}>{tier.toUpperCase()}</h2>
-          <div className={styles.grid}>
-            {groupedByTier[tier].map(sponsor => (
-              <SponsorCard key={sponsor.name} sponsor={sponsor} />
-            ))}
-          </div>
-        </>
-      ))}
+      {Object.keys(groupedByTier)
+        .sort((a, b) => groupedByTier[b][0].tierRank - groupedByTier[a][0].tierRank)
+        .map(tier => (
+          <>
+            <h2 className={styles.tier}>{tier.toUpperCase()}</h2>
+            <div className={styles.grid}>
+              {groupedByTier[tier]
+                .sort((a, b) => (a.name < b.name ? -1 : 1))
+                .map(sponsor => (
+                  <SponsorCard key={sponsor.name} sponsor={sponsor} />
+                ))}
+            </div>
+          </>
+        ))}
     </>
   );
 }
