@@ -8,7 +8,7 @@ function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
   return (
     <Link key={sponsor.name} href={sponsor.website}>
       <a
-        target='_blank'
+        target="_blank"
         role="button"
         tabIndex={0}
         className={cn(styles.card, {
@@ -46,22 +46,34 @@ type Props = {
   sponsors: Sponsor[];
 };
 
+type groupedByTierType = { [tier: string]: Sponsor[] };
+
+{
+  silver: [{}];
+}
+
 export default function SponsorsGrid({ sponsors }: Props) {
-  const silverSponsors = sponsors.filter(s => s.tier === 'silver');
-  const otherSponsors = sponsors.filter(s => s.tier !== 'silver');
+  const groupedByTier = sponsors.reduce((reducer, sponsor) => {
+    if (!Object.keys(reducer).includes(sponsor.tier)) {
+      reducer[sponsor.tier] = [sponsor];
+    } else {
+      reducer[sponsor.tier].push(sponsor);
+    }
+    return reducer;
+  }, {} as groupedByTierType);
 
   return (
     <>
-      <div className={styles.grid}>
-        {otherSponsors.map(sponsor => (
-          <SponsorCard key={sponsor.name} sponsor={sponsor} />
-        ))}
-      </div>
-      <div className={styles.grid}>
-        {silverSponsors.map(sponsor => (
-          <SponsorCard key={sponsor.name} sponsor={sponsor} />
-        ))}
-      </div>
+      {Object.keys(groupedByTier).map(tier => (
+        <>
+          <h2 className={styles.tier}>{tier.toUpperCase()}</h2>
+          <div className={styles.grid}>
+            {groupedByTier[tier].map(sponsor => (
+              <SponsorCard key={sponsor.name} sponsor={sponsor} />
+            ))}
+          </div>
+        </>
+      ))}
     </>
   );
 }

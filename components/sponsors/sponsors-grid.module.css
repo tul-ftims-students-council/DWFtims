@@ -19,8 +19,15 @@
 
 .grid {
   width: 100%;
-  margin: 50px auto;
+  margin: var(--space-8x) auto;
   padding: 0 24px;
+}
+
+.tier {
+  width: 100%;
+  padding: 0 var(--space-8x);
+  font-weight: bold;
+
 }
 
 @media (min-width: 768px) {
