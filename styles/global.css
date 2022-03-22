@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Inter';
+  font-family: 'Segoe UI';
   font-style: normal;
   font-weight: 100 900;
   font-display: optional;
@@ -68,7 +68,7 @@ body {
   height: 100%;
   margin: 0;
   line-height: 1.65;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   font-size: var(--text-md);
   font-weight: 400;
