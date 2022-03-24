@@ -80,7 +80,7 @@ export async function getAllSpeakers(): Promise<Speaker[]> {
           bio
           title
           slug
-          twitter {
+          linkedin {
             url
           }
           github {
