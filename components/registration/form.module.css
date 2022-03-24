@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  min-width: 40%;
+  min-width: 50%;
   border-radius: var(--space-2x);
   background: #111111;
   padding: 1px;
