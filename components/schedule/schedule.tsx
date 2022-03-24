@@ -17,7 +17,9 @@ function StageRow({ stage }: { stage: Stage }) {
       <h3 className={cn(styles['stage-name'], styles[stage.slug])}>
         <span>
           {stage.name.split(' ').map(part => (
-            <p className={styles['stage-name']}>{part}</p>
+            <p key={part} className={styles['stage-name']}>
+              {part}
+            </p>
           ))}
         </span>
       </h3>
@@ -42,9 +44,9 @@ export default function Schedule({ allStages }: Props) {
   return (
     <div className={styles.container}>
       <div className={styles['row-wrapper']}>
-        {allStages.map(
-          stage => stage.schedule.length > 0 && <StageRow key={stage.slug} stage={stage} />
-        )}
+        {allStages
+          .sort((a, b) => (a.name > b.name ? 1 : -1))
+          .map(stage => stage.schedule.length > 0 && <StageRow key={stage.slug} stage={stage} />)}
       </div>
     </div>
   );
