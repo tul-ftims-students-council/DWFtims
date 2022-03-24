@@ -67,7 +67,7 @@ export default function SponsorsGrid({ sponsors }: Props) {
       {Object.keys(groupedByTier)
         .sort((a, b) => groupedByTier[b][0].tierRank - groupedByTier[a][0].tierRank)
         .map(tier => (
-          <>
+          <div key={tier}>
             <h2 className={styles.tier}>{tier.toUpperCase()}</h2>
             <div className={styles.grid}>
               {groupedByTier[tier]
@@ -76,7 +76,7 @@ export default function SponsorsGrid({ sponsors }: Props) {
                   <SponsorCard key={sponsor.name} sponsor={sponsor} />
                 ))}
             </div>
-          </>
+          </div>
         ))}
     </>
   );

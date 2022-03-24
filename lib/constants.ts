@@ -14,7 +14,7 @@ export const CODE_OF_CONDUCT =
 export const NAVIGATION = [
   {
     name: 'Transmisja',
-    route: '/stage/a'
+    route: '/stage/b14'
   },
   {
     name: 'Harmonogram',

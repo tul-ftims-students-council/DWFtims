@@ -3,7 +3,8 @@
   padding: 0 24px;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 0.7fr));
   grid-gap: 24px;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;

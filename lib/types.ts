@@ -8,8 +8,8 @@ export type Speaker = {
   bio: string;
   title: string;
   slug: string;
-  twitter: string;
-  github: string;
+  linkedin: string | { url: string };
+  github: string | { url: string };
   company: string;
   talk: Talk;
   image: Image;
