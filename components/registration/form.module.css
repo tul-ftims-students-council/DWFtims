@@ -57,7 +57,8 @@
   width: 100%;
   background: transparent;
   outline: none;
-  height: 56px;
+  height: min-content;
+  min-height: 56px;
   padding-left: 15px;
   padding-right: 15px;
   font-size: var(--text-md);
