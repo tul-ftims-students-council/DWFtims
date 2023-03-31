@@ -5,7 +5,6 @@ import LoadingDots from '../utils/loading-dots';
 import styleUtils from '../utils/utils.module.css';
 import styles from './form.module.css';
 import { register } from '@lib/user-api';
-import Captcha, { useCaptcha } from '../utils/captcha';
 import { Talk } from '@lib/types';
 import useConfData from '@lib/hooks/use-conf-data';
 
@@ -23,12 +22,6 @@ export default function Form({ sharePage, allTalks }: Props) {
   const [focused, setFocused] = useState(false);
   const [formState, setFormState] = useState<FormState>('default');
   const { setPageState, setUserData } = useConfData();
-  const {
-    ref: captchaRef,
-    execute: executeCaptcha,
-    reset: resetCaptcha,
-    isEnabled: isCaptchaEnabled
-  } = useCaptcha();
 
   const handleAddTalk = (talk: string) => {
     setSelectedTalks([...selectedTalks, talk]);
@@ -83,26 +76,13 @@ export default function Form({ sharePage, allTalks }: Props) {
       if (formState === 'default') {
         setFormState('loading');
 
-        if (isCaptchaEnabled) {
-          return executeCaptcha();
-        }
 
         return handleRegister();
       } else {
         setFormState('default');
       }
     },
-    [executeCaptcha, formState, isCaptchaEnabled, handleRegister]
-  );
-
-  const onTryAgainClick = useCallback(
-    (e: React.MouseEvent) => {
-      e.preventDefault();
-
-      setFormState('default');
-      resetCaptcha();
-    },
-    [resetCaptcha]
+    [formState, handleRegister]
   );
 
   return (
@@ -156,7 +136,6 @@ export default function Form({ sharePage, allTalks }: Props) {
             <button
               type="button"
               className={cn(styles.submit, styles.register, styles.error)}
-              onClick={onTryAgainClick}
             >
               Spróbuj ponownie
             </button>
@@ -180,7 +159,6 @@ export default function Form({ sharePage, allTalks }: Props) {
           </div>
         )}
       </div>
-      <Captcha ref={captchaRef} onVerify={handleRegister} />
     </form>
   );
 }
