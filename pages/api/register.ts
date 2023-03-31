@@ -9,8 +9,7 @@ export default async function register(req: NextApiRequest, res: NextApiResponse
   const limits = {
     'Podstawy testowania automatycznego w procesie CI/CD': 80,
     'Autoprezentacja - element składowy sukcesu. Jak wyjść poza skillset i sięgnąć po więcej?': 120,
-    'Agile Workshop': 24,
-    '': 10000
+    'Agile Workshop': 24
   };
 
   if (!CLIENT_EMAIL || !PRIVATE_KEY || !SHEET_NAME) {
