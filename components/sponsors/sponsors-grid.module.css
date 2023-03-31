@@ -16,6 +16,10 @@
   justify-content: flex-start;
 }
 
+.name-wrapper > img {
+    width: auto !important;
+}
+
 .card:hover,
 .card:focus {
   outline: none;
@@ -68,9 +72,6 @@
 .image {
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
   object-fit: cover;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
