@@ -42,6 +42,10 @@
   border-radius: var(--space-2x);
 }
 
+.linkedin-link:hover > svg > path {
+    fill: #D8D8D8
+}
+
 @media (min-width: 768px) {
   .container {
     flex-direction: row;
