@@ -35,6 +35,9 @@ export default function Layout({ children, className, hideNav, layoutStyles, ful
                     <Image alt="logo" src="/logo.png" width="48" height="48" />
                   </a>
                 </Link>
+                <span className={styles.logo}>
+                  <Image alt="fundacja" src="/fundacja.png" width="150" height="48" />
+                </span>
               </div>
               <div className={styles.tabs}>
                 {NAVIGATION.map(({ name, route }) => (
