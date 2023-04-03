@@ -66,6 +66,7 @@ export default async function register(req: NextApiRequest, res: NextApiResponse
         message: 'Warsztat ' + String(talks[i]) + ' osiągnął już limit miejsc.'
       });
     }
+    counter = 0;
   }
 
   if (isEmailAlreadyInSheet) {
