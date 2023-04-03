@@ -54,14 +54,11 @@ export default async function register(req: NextApiRequest, res: NextApiResponse
   const isEmailAlreadyInSheet = !!rows.filter(row => row.indexNumber === indexNumber).length;
 
   let counter = 0;
-  let flag = 0;
   for (let i = 0; i < talks.length; i++) {
     for (let j = 0; j < rows.length; j++) {
       if (rows[j].talks.includes(talks[i])) counter++;
     }
-    if (counter > Object.values(limits)[Object.keys(limits).findIndex(key => key === talks[i])])
-      flag = 1;
-    if (flag) {
+    if (counter > Object.values(limits)[Object.keys(limits).findIndex(key => key === talks[i])]) {
       return res.status(409).json({
         message: 'Warsztat ' + String(talks[i]) + ' osiągnął już limit miejsc.'
       });
