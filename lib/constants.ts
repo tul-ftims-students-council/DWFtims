@@ -5,8 +5,8 @@ export const SITE_NAME_MULTILINE = ['WRS', 'WFTIMS'];
 export const SITE_NAME = 'WRS WFTIMS';
 export const META_DESCRIPTION = '';
 export const SITE_DESCRIPTION = 'Zapisz się na prezentacje już teraz!';
-export const DATE = '04.04.2023';
-export const SHORT_DATE = 'kwi 4 - 9:00am CET';
+export const DATE = '10.04.2024';
+export const SHORT_DATE = 'kwi 10 - 9:00am CET';
 export const COOKIE = 'user-id';
 
 export const CODE_OF_CONDUCT =

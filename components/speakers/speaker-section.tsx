@@ -20,7 +20,7 @@ type Props = {
 export default function SpeakerSection({ speaker }: Props) {
   return (
     <>
-      <Link href="/speakers">
+      <Link legacyBehavior href="/speakers">
         <a className={styles.backlink}>
           <svg
             viewBox="0 0 24 24"
