@@ -22,7 +22,7 @@ export const NAVIGATION = [
   },
   {
     name: 'Partnerzy',
-    route: '/expo'
+    route: '/partners'
   },
   {
     name: 'Oferty pracy',
