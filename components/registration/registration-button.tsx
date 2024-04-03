@@ -38,7 +38,7 @@ const RegistrationButton = ({
           </button>
         </div>
         <div>
-          <a target="_blank" href="https://forms.gle/m2tJ1vYFMNKKLK9j8">
+          <a target="_blank" href="https://forms.gle/XEo4HLDMw49ft9ks9">
             <button
               className={cn(styles.register, styleUtils['center-el'], {
                 [styleUtils['move-to-left']]: isRegistrationStarted
