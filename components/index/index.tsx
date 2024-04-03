@@ -26,7 +26,7 @@ export default function Conf({
 }: Props) {
   const [userData, setUserData] = useState<UserData>(defaultUserData);
   const [pageState, setPageState] = useState<PageState>(defaultPageState);
-  const [isRegistrationStarted, setIsRegistrationStarted] = useState(true);
+  const [isRegistrationStarted, setIsRegistrationStarted] = useState(false);
   const [isFormVisible, setIsFormVisible] = useState(false);
 
   const handleStartingRegistration = useCallback(() => {
