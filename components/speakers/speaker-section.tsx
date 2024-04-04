@@ -39,7 +39,7 @@ export default function SpeakerSection({ speaker }: Props) {
         </a>
       </Link>
       <div key={speaker.name} className={styles.container}>
-        <div style={{ minWidth: '300px' }}>
+        <div style={{ minWidth: '300px', position: 'relative' }}>
           <Image
             alt={speaker.name}
             title={speaker.name}
@@ -47,8 +47,7 @@ export default function SpeakerSection({ speaker }: Props) {
             className={styles.image}
             objectFit="cover"
             loading="lazy"
-            height={500}
-            width={400}
+            fill={true}
           />
         </div>
         <div className={styles['speaker-details']}>

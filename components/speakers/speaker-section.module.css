@@ -43,6 +43,7 @@
 .image {
   border-radius: var(--space-2x);
   max-width: 100%;
+  position: relative !important;
 }
 
 .linkedin-link:hover > svg > path {
@@ -72,7 +73,7 @@
 
   .image {
     max-width: 300px;
-    max-height: 420px;
+    height: auto !important;
   }
 }
 
