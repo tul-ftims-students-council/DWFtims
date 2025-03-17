@@ -31,7 +31,7 @@ export default function Footer() {
         <div>
           <a
             className={styles['footer-link']}
-            href="https://www.facebook.com/events/789631246317440"
+            href="https://www.facebook.com/events/973832858029546/"
             target="_blank"
           >
             <FaFacebookSquare />
